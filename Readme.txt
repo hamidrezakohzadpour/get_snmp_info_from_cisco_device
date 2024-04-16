@@ -8,9 +8,16 @@ Usage:
 3. Make text file with name "device_ip.txt" and put on configs directory.
 4. Add IP of cisco device to device_ip.txt file.
 5. Put script to side of configs directory.
-6. Run this command: python.exe script.py.
-7. Script return a csv file contain of data of each cisco devices.
-8. Import csv file into EXCEL and enjoy it.
+6. Add username and password of cisco device (privilage 15 required) into script.
+	Switch = { 
+            "hostname": ip_address,
+            "username": "username",
+            "password": "password",
+            "optional_args": {"secret": "password"} 
+            }
+7. Run this command: python.exe script.py.
+8. Script return a csv file contain of data of each cisco devices.
+9. Import csv file into EXCEL and enjoy it.
 ============================================================
 Tested on:
 	windows 11,23H2 (OS Build 22631.3447)
