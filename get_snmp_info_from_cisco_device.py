@@ -26,7 +26,7 @@ def output_file_address():
         return 'configs/device_snmp_info.csv'
 
 if not os.path.exists(input_file_address()):
-    os.mkdir("configs")
+    os.mkdir('configs')
     file = open(input_file_address(), 'a')
     print (Fore.RED + "Please add IP Addresses to configs\\device_ip.txt" + Fore.WHITE)
     file.close()
