@@ -21,6 +21,7 @@ Usage:
 ============================================================
 Tested on:
 	windows 11,23H2 (OS Build 22631.3447)
+	AlmaLinux release 8.9 (Midnight Oncilla)
 	Python 3.12.0
 ============================================================
 Hamidreza Kohzadpour, 2024, kohzadpour@gmail.com

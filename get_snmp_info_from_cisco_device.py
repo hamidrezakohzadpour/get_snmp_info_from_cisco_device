@@ -11,14 +11,27 @@ def str_date_time():
     str_time = now.strftime("%H%M%S")
     return "_" + str_date + "_" + str_time
 
-if not os.path.exists("configs"):
+def input_file_address():
+    OSNAME = (os.name)
+    if OSNAME == "nt":
+        return 'configs\\device_ip.txt'
+    elif OSNAME == "posix":
+        return 'configs/device_ip.txt'
+
+def output_file_address():
+    OSNAME = (os.name)
+    if OSNAME == "nt":
+        return 'configs\\device_snmp_info.csv'
+    elif OSNAME == "posix":
+        return 'configs/device_snmp_info.csv'
+
+if not os.path.exists(input_file_address()):
     os.mkdir("configs")
-if not os.path.exists("configs\\device_ip.txt"):
-    file = open("configs\\device_ip.txt", 'a')
+    file = open(input_file_address(), 'a')
     print (Fore.RED + "Please add IP Addresses to configs\\device_ip.txt" + Fore.WHITE)
     file.close()
     exit()
-with open ("configs\\device_ip.txt",'r') as f:
+with open (input_file_address(),'r') as f:
     devices_list = f.read().splitlines()
     f.close()
 for ip_address in devices_list:
@@ -41,8 +54,7 @@ for ip_address in devices_list:
         print(Fore.RED + f"Unknown Err!. {Switch['hostname']}" + Fore.WHITE)
     else:
         #Make output file 
-        output_file_name = "configs\\device_snmp_info.csv"
-        with open ( output_file_name, 'a') as f:
+        with open ( output_file_address(), 'a') as f:
             print (Fore.GREEN + "Connected....")
             snmp_dict = Device.get_snmp_information()
             for snmp in snmp_dict["community"]:
